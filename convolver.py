@@ -9,7 +9,7 @@ AF_PATH = sys.argv[2]
 OUT_FILE = sys.argv[3]
 
 PLOT_ME = False
-if(sys.argv[4] and sys.argv[4] == "-p"):
+if(len(sys.argv)>4):
     PLOT_ME = True
 
 print("\n   IR file: "+ IR_PATH + "\n  WAV file: " + AF_PATH)
@@ -34,22 +34,28 @@ wet_signal = wet_signal / np.max(np.abs(wet_signal))
 
 # accomodate signal sizes
 dry_signal = np.concatenate((af_sig,np.zeros(len(wet_signal) - len(af_sig))))
-output_signal = dry_signal + db_to_mag(-6) * wet_signal
+output_signal = dry_signal + db_to_mag(-2) * wet_signal
 
 wav.write("WET_"+OUT_FILE, fs, wet_signal)
-wav.write("MIX_"+OUT_FILE, fs, output_signal)
+wav.write(OUT_FILE, fs, output_signal)
 
-def creat_spect(sig,f_s,p_ath):
-    plt.figure()
+plt.figure()
+
+
+def creat_spect(sig,f_s,p_ath, fig_num):
+    plt.figure(fig_num)
     plt.specgram(sig, Fs=f_s, NFFT=512, noverlap=500, vmin=-100)
     plt.colorbar()
     plt.title(p_ath)
     plt.xlabel("Time (Seconds)")
     plt.ylabel("Frequency (Hz)")
-    plt.show()
+    
 
 if PLOT_ME:
-    creat_spect(ir_sig,fs,"Impulse Response: "+IR_PATH)
-    creat_spect(af_sig,fs,"Input audio: "+AF_PATH)
-    creat_spect(wet_signal,fs,"WET audio "+ AF_PATH)
-    creat_spect(output_signal,fs,"Convolved: "+ OUT_FILE)
+    print("LOADING SPECTROGRAMS. . .")
+    creat_spect(ir_sig,fs,"Impulse Response: "+IR_PATH,1)
+    creat_spect(af_sig,fs,"Input audio: "+AF_PATH,2)
+    creat_spect(wet_signal,fs,"WET audio "+ AF_PATH,3)
+    creat_spect(output_signal,fs,"Convolved: "+ OUT_FILE,4)
+    print("JUST ONE MORE SECOND :) . . .")
+    plt.show()
