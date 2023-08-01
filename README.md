@@ -1,7 +1,7 @@
 # convolver
 Python script that takes an Impulse response .wav and a input .wav to demonstrate audio convolution. 
 
-Created by Sean Higley s_higley@u.pacific.edu
+Created by Sean Higley snhigley@gmail.com
 Inspired by Dan Price's video on Spring Reverb Analysis and Synthesization 
 
 IMPORTANT LIBRARIES:
