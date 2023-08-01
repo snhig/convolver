@@ -8,6 +8,8 @@ IMPORTANT LIBRARIES:
 	-	numpy
 	-	matplotlib
 	-	scipy
+	-   PySide6
+	-   pyqtgraph
 
 Running from the command line:
 
