@@ -1,5 +1,5 @@
 # convolver
-This is a Python script that takes an Impulse response .wav and a input .wav to demonstrate audio convolution. A tool used in audio and signal processing. 
+This is a mini Python applicaiton that takes an Impulse response .wav and a input .wav to demonstrate audio convolution. A tool used in audio and signal processing. 
 
 Created by Sean Higley snhigley@gmail.com
 Inspired by Dan Price's video on [Spring Reverb Analysis and Synthesization](https://www.youtube.com/watch?v=q63ypxds0cY) 
